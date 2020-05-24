@@ -16,7 +16,7 @@ export const Model = observable({
 //This function getting data from server
 Model.getData = async function () {
   // Define the API endpoint (what server and what service are we going to call?).
-  // CURRENTLY API ENDPOINT IS NOT CLOSED temporarily(::so many user request),In meantime use Demi data
+  // CURRENTLY API ENDPOINT IS CLOSED temporarily(::so many user request),In meantime use Demi data
   // const endpoint =
   //   " http://bvc-p.singh817-collegeproject.s3.ca-central-1.amazonaws.com/data.json";
 
@@ -65,7 +65,7 @@ Model.getQuantity = function () {
 };
 Model.PlaceOrder = async function () {
   /**
-   // CURRENTLY API ENDPOINT IS NOT OFF temporarily(::so many user request)
+   // CURRENTLY API ENDPOINT IS OFF temporarily(::so many user request)
    */
 
   // checking the OrderDetails array  is not empty
@@ -181,7 +181,7 @@ Model.CalculatingTotalPrice = function (price) {
 // This function Update the item by first fetching the data from server and then Update the respective item and then send back to  server
 Model.UpdateItem = async function () {
   /*
-  // CURRENTLY API ENDPOINT IS NOT CLOSED temporarily(::so many user request)
+  // CURRENTLY API ENDPOINT IS CLOSED temporarily(::so many user request)
   */
   const Url =
     " http://bvc-p.singh817-collegeproject.s3.ca-central-1.amazonaws.com/data.json";
@@ -246,7 +246,7 @@ Model.UpdateItem = async function () {
 // This function Update the item by first fetching the data from server and then delete the respective item  from data and then send back to  server
 Model.DeleteItem = async function () {
   /*
-  // CURRENTLY API ENDPOINT IS NOT CLOSED temporarily(::so many user request)
+  // CURRENTLY API ENDPOINT IS  CLOSED temporarily(::so many user request)
   */
   const Url =
     " http://bvc-p.singh817-collegeproject.s3.ca-central-1.amazonaws.com/data.json";
