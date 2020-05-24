@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+ ### Images of restaurant website
+ 
+ ##  Mainpage of App
+![display](https://user-images.githubusercontent.com/65533457/82293773-55020400-996a-11ea-85e5-26ea67153472.PNG)
+
+## Assign the desired food quantity
+![quantity](https://user-images.githubusercontent.com/65533457/82293966-9c889000-996a-11ea-8de4-c2d38c803882.png)
+
+## Placing an order
+![placethe order](https://user-images.githubusercontent.com/65533457/82294022-b1652380-996a-11ea-8b62-2ed49632f591.png)
+
+---
 ## Available Scripts
 
 In the project directory, you can run:
@@ -66,3 +78,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
