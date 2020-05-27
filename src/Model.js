@@ -1,5 +1,4 @@
 import { observable } from "mobx";
-import { Demidata } from "./data.js";
 export const Model = observable({
   source_data: [],
   orderDetails: [],
@@ -16,27 +15,23 @@ export const Model = observable({
 //This function getting data from server
 Model.getData = async function () {
   // Define the API endpoint (what server and what service are we going to call?).
-  // CURRENTLY API ENDPOINT IS CLOSED temporarily(::so many user request),In meantime use Demi data
-  // const endpoint =
-  //   " http://bvc-p.singh817-collegeproject.s3.ca-central-1.amazonaws.com/data.json";
+  const endpoint =
+    " https://bhartirestaurant.s3.ca-central-1.amazonaws.com/data.json";
 
-  // const FetchData = {
-  //   method: "GET",
-  //   mode: "cors",
-  //   cache: "no-cache",
-  //   credentials: "omit",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: null,
-  // };
-  // // Send a GET request to the API endpoint, including the API request data.  This starts
-  // // a "promise" -- which is a guarantee to return later with some information.  The promise
-  // // is complete when the API call finishes (or when it hits an error).
-  // let FetchReply = await fetch(endpoint, FetchData);
-  // let result = await FetchReply.json();
-  // console.log(result);
-  // this.source_data = result;
-
-  this.source_data = Demidata;
+  const FetchData = {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "omit",
+    headers: { "Content-Type": "application/json" },
+    body: null,
+  };
+  // Send a GET request to the API endpoint, including the API request data.  This starts
+  // a "promise" -- which is a guarantee to return later with some information.  The promise
+  // is complete when the API call finishes (or when it hits an error).
+  let FetchReply = await fetch(endpoint, FetchData);
+  let result = await FetchReply.json();
+  this.source_data = result;
 }; // end of getdata function
 
 Model.GetSourceData = function () {
@@ -64,41 +59,36 @@ Model.getQuantity = function () {
   return this.quantity;
 };
 Model.PlaceOrder = async function () {
-  /**
-   // CURRENTLY API ENDPOINT IS OFF temporarily(::so many user request)
-   */
-
   // checking the OrderDetails array  is not empty
   if (this.orderDetails.length !== 0) {
-    alert("Your order place successfully");
-    // Define the API endpoint (what server and what service are we going to call?).
-    //   const PutUrl =
-    //     "http://bvc-p.singh817-collegeproject.s3.ca-central-1.amazonaws.com/OrderDetails.json";
+    //Define the API endpoint (what server and what service are we going to call?).
+    const PutUrl =
+      "https://bhartirestaurant.s3.ca-central-1.amazonaws.com/OrderDetails.json";
 
-    //   const ObjectToStoreInJSON = JSON.stringify(this.orderDetails);
+    const ObjectToStoreInJSON = JSON.stringify(this.orderDetails);
 
-    //   let FetchData = {
-    //     method: "PUT",
-    //     mode: "cors",
-    //     cache: "no-cache",
-    //     credentials: "omit",
-    //     headers: {
-    //       "Content-Type": "application/octet-stream",
-    //       "Content-Length": ObjectToStoreInJSON.length,
-    //       "x-amz-date": new Date().toUTCString(),
-    //       "x-amz-acl": "public-read",
-    //     },
-    //     body: ObjectToStoreInJSON,
-    //   };
-    //   let FetchReply = await fetch(PutUrl, FetchData);
-    //   console.log(FetchReply);
-    //   if (FetchReply.statusText === "OK" ) {
-    //     // If the API success showing the alert message
-    //     alert("Your order place successfully");
-    //   } // end of if statement
-    // } // end of main  if statement
-    // else {
-    //   alert("Please select the items");
+    let FetchData = {
+      method: "PUT",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "omit",
+      headers: {
+        "Content-Type": "application/octet-stream",
+        "Content-Length": ObjectToStoreInJSON.length,
+        "x-amz-date": new Date().toUTCString(),
+        "x-amz-acl": "public-read",
+      },
+      body: ObjectToStoreInJSON,
+    };
+    let FetchReply = await fetch(PutUrl, FetchData);
+    console.log(FetchReply);
+    if (FetchReply.statusText === "OK") {
+      // If the API success showing the alert message
+      alert("Your order place successfully");
+    } // end of if statement
+  } // end of main  if statement
+  else {
+    alert("Please select the items");
   } // end of else statement
 };
 
@@ -180,11 +170,8 @@ Model.CalculatingTotalPrice = function (price) {
 
 // This function Update the item by first fetching the data from server and then Update the respective item and then send back to  server
 Model.UpdateItem = async function () {
-  /*
-  // CURRENTLY API ENDPOINT IS CLOSED temporarily(::so many user request)
-  */
   const Url =
-    " http://bvc-p.singh817-collegeproject.s3.ca-central-1.amazonaws.com/data.json";
+    " https://bhartirestaurant.s3.ca-central-1.amazonaws.com/OrderDetails.json";
 
   const FetchData = {
     method: "GET",
@@ -245,11 +232,8 @@ Model.UpdateItem = async function () {
 /// delete the item
 // This function Update the item by first fetching the data from server and then delete the respective item  from data and then send back to  server
 Model.DeleteItem = async function () {
-  /*
-  // CURRENTLY API ENDPOINT IS  CLOSED temporarily(::so many user request)
-  */
   const Url =
-    " http://bvc-p.singh817-collegeproject.s3.ca-central-1.amazonaws.com/data.json";
+    "https://bhartirestaurant.s3.ca-central-1.amazonaws.com/OrderDetails.json";
 
   const FetchData = {
     method: "GET",
@@ -296,3 +280,4 @@ Model.DeleteItem = async function () {
     alert("Please enter the valid value");
   } // end of else statement
 }; // end of delete item function
+ 
